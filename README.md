@@ -191,7 +191,7 @@ Apache-2.0
 GPL-3.0
 ```
 
-## Output standard license header `-h`
+## Output standard license header `-s`
 
 The target is `GPL`,` AGPL`,`CC0`,`Apache`. [headers](res/headers). Source is [SPDX v3.7 2019-10-22](https://spdx.org/licenses/)
 

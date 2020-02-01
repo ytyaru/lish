@@ -190,7 +190,7 @@ Apache-2.0
 GPL-3.0
 ```
 
-## 標準ライセンスヘッダ出力 `-h`
+## 標準ライセンスヘッダ出力 `-s`
 
 　ターゲットは`GPL`,` AGPL`,`CC0`,`Apache`。 [headers](res/headers). 情報源は[SPDX v3.7 2019-10-22](https://spdx.org/licenses/)
 
