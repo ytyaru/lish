@@ -4,6 +4,8 @@
 
 　`LICENSE`ファイルを生成する。
 
+![asciinema](doc/lish_mit.svg)
+
 # 特徴
 
 * CLI (bash)

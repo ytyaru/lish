@@ -4,6 +4,8 @@
 
 Create a LICENSE file.
 
+![asciinema](doc/lish_mit.svg)
+
 # Features
 
 * CLI (bash)
