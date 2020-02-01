@@ -1,0 +1,55 @@
+Create a LICENSE file. 	$(Version)
+Usage: $EXE_NAME [-a AUTHOR -y YEAR -i -s] LICENSE_ID
+Options:
+  -a Author name
+  -y Copyright year
+  -i Add LICENSE_ID to file name suffix
+  -s Output standard-license-header
+  Other options display help.
+LICENSE_ID:
+  ignore case. Searches for a prefix match.
+  Groups:
+    p public-domain : CC0-1.0
+    l copyleft      : AGPL-3.0
+    c copycenter    : Apache-2.0
+  Shortcut and Alias:
+    p pd  cc0   : CC0-1.0
+    c ap  apa   : Apache-2.0
+    l ag  agpl  : AGPL-3.0-only
+      ag+ agpl+ : AGPL-3.0-or-later
+       g   gpl  :  GPL-3.0-only
+       g+  gpl+ :  GPL-3.0-or-later
+      lg  lgpl  : LGPL-3.0-only
+      lg+ lgpl+ : LGPL-3.0-or-later
+      b2  bsd2  : BSD-2-Clause
+      b3  bsd3  : BSD-3-Clause
+      b3c bsd3c : BSD-3-Clause-Clear
+    m           : MIT
+    u           : Unlicense
+          ccb   : CC-BY-4.0
+          ccbs  : CC-BY-SA-4.0
+  Supported aliases:
+    "$(AliasPath)"
+  Add licenses:
+    Reference: https://spdx.org/licenses/
+    File: $(SpdxLicenseIdsPath)
+          $TEMPLATE_DIR/
+AUTHOR:
+  Default value is 'git config --local user.name'
+  Only when a '.git/config' file exists.
+YEAR: 
+  Default value is 'date "+%Y"'
+Common mistakes:
+  Placing optional arguments after positional arguments will fail.
+  $ $EXE_NAME mit -a A
+  ERROR: MIT requires an author name. Add '-a' option.
+Examples:
+  $EXE_NAME l
+  $EXE_NAME c
+  $EXE_NAME p
+  $EXE_NAME m
+  $EXE_NAME AGPL
+  $EXE_NAME -a AuthorName l
+  $EXE_NAME -a AuthorName -y 1999 l
+  $EXE_NAME -h l
+  $EXE_NAME -h -a AuthorName -y 1999 l

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+Run() {
+	local SELECTED
+	local CANDIDATES=()
+	local CANDIDATES_STR='CC0 Unlicense AGPL GPL LGPL CC-BY CC-BY-SA Apache MIT BSD-2 BSD-3 BSD-3-Clear'
+	CANDIDATES=${CANDIDATES_STR//\// }
+	Any() { [[ " ${CANDIDATES[@]} " =~ " $1 " ]]; }
+	select selected in ${CANDIDATES[@]}; do
+		Any "$selected" && { SELECTED="$selected"; break; }
+#		[ 0 -lt $selected -a $selected -le ${#CANDIDATES[@]} ] && { SELECTED=selected; break; }
+	done;
+#	zenity --info --text "AAAAAAAA"
+#	local id="$(FindId)"
+	FindId
+	IsRequiredAuthor "$(GetTemplatePath)" && read -e -p 'Author name: ' AUTHOR
+	OutputLicenseFile
+#	GetTemplatePath
+#	IsRequiredAuthor "$path" && 
+#	echo "$SELECTED"
+#	read -e -p 'Please select a license.'
+#	whiptail –radiolist
+#	whiptail –checklist
+}
+Run "$@"
