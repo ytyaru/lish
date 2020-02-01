@@ -7,13 +7,68 @@ Create a LICENSE file.
 # Features
 
 * CLI (bash)
-* Support licenses: 12
+* [Support licenses: 12](#support-licenses)
+* Output [`LICENSE` file](res/templates) to current directory
+* Output [Standard license headers](res/headers) to `stdout`
+* Detect license: [licensee](https://github.com/licensee/licensee)
 
-group|licenses
+## Support licenses
+
+Group|License
 -----|--------
-copyleft|`AGPL`, `GPL`, `LGPL`, `CC-BY-SA-4.0`
-permissive|`Apache-2.0`, `MIT`, `BSD`(2,3,3-clear), CC-BY-4.0
-public-domain|`CC0`, `Unlicense`
+[copyleft][copyleft]|[`AGPL`][AGPL]([`+`][AGPL+]), [`GPL`][GPL]([+][GPL+]), [`LGPL`][LGPL]([+][LGPL+]), [`CC-BY-SA-4.0`][CC-BY-SA-4.0]
+[permissive][permissive]|[`Apache-2.0`](https://spdx.org/licenses/Apache-2.0.html#licenseText), [`MIT`](https://spdx.org/licenses/MIT.html#licenseText), `BSD`([2][BSD-2-Clause],[3][BSD-3-Clause],[3-clear][BSD-3-Clause-Clear]), [`CC-BY-4.0`][CC-BY-4.0]
+[public-domain][public-domain]|[`CC0`][CC0-1.0], [`Unlicense`][Unlicense]
+
+* Not support:
+    * [proprietary][proprietary]
+    * [Non commercial activity][Non-commercial-activity]
+* Source: [SPDX][SPDX] <small>v3.7 2019-10-22</small>
+
+<details><summary>Approval</summary>
+
+### Approval
+
+type|[FSF][FSF]|[OSI][OSI]|License
+----|----------|----------|-------
+[copyleft][copyleft]|○|○|[`AGPL`][AGPL]
+[copyleft][copyleft]|○|○|[`GPL`][GPL]
+[copyleft][copyleft]|○|○|[`LGPL`][LGPL]
+[copyleft][copyleft]|○|☓|[`CC-BY-SA-4.0`][CC-BY-SA-4.0]
+[permissive][permissive]|○|○|[`Apache-2.0`][Apache-2.0]
+[permissive][permissive]|○|○|[`MIT`][MIT]
+[permissive][permissive]|☓|○|[`BSD-2-Clause`][BSD-2-Clause]
+[permissive][permissive]|○|○|[`BSD-3-Clause`][BSD-3-Clause]
+[permissive][permissive]|○|☓|[`BSD-3-Clause-Clear`][BSD-3-Clause-Clear]
+[permissive][permissive]|○|☓|[`CC-BY-4.0`][CC-BY-4.0]
+[public-domain][public-domain]|○|☓|[`CC0-1.0`][CC0-1.0]
+[public-domain][public-domain]|○|☓|[`Unlicense`][Unlicense]
+
+</details>
+
+[copyleft]:https://en.wikipedia.org/wiki/Copyleft
+[AGPL]:https://spdx.org/licenses/AGPL-3.0-only.html#licenseText
+[AGPL+]:https://spdx.org/licenses/AGPL-3.0-or-later.html#licenseText
+[GPL]:https://spdx.org/licenses/GPL-3.0-only.html#licenseText
+[GPL+]:https://spdx.org/licenses/GPL-3.0-or-later.html#licenseText
+[LGPL]:https://spdx.org/licenses/LGPL-3.0-only.html#licenseText
+[LGPL+]:https://spdx.org/licenses/LGPL-3.0-or-later.html#licenseText
+[CC-BY-SA-4.0]:https://spdx.org/licenses/CC-BY-SA-4.0.html#licenseText
+[permissive]:https://en.wikipedia.org/wiki/Permissive_software_license
+[Apache-2.0]:https://spdx.org/licenses/Apache-2.0.html#licenseText
+[MIT]:https://spdx.org/licenses/MIT.html#licenseText
+[BSD-2-Clause]:https://spdx.org/licenses/BSD-2-Clause.html#licenseText
+[BSD-3-Clause]:https://spdx.org/licenses/BSD-3-Clause.html#licenseText
+[BSD-3-Clause-Clear]:https://spdx.org/licenses/BSD-3-Clause-Clear.html#licenseText
+[CC-BY-4.0]:https://spdx.org/licenses/CC-BY-4.0.html#licenseText
+[public-domain]:https://en.wikipedia.org/wiki/Public_domain
+[CC0-1.0]:https://spdx.org/licenses/CC0-1.0.html#licenseText
+[Unlicense]:https://spdx.org/licenses/Unlicense.html#licenseText
+[Non-commercial-activity]:https://en.wikipedia.org/wiki/Non-commercial_activity
+[proprietary]:https://en.wikipedia.org/wiki/Proprietary_software
+[FSF]:https://en.wikipedia.org/wiki/Free_Software_Foundation
+[OSI]:https://en.wikipedia.org/wiki/Open_Source_Initiative
+[SPDX]:https://spdx.org/licenses/
 
 # Requirement
 
@@ -41,15 +96,11 @@ git clone https://github.com/ytyaru/lish
 
 # Usage
 
-## Make symbolic link
+## Make symbolic link and set `PATH` environment variable
 
 ```sh
 cd lish/src
-ln ./lish.sh ./lish
-```
-
-```sh
-export PATH="/path/exist_lish_dir:$PATH"
+ln -s ./lish.sh /usr/bin/lish
 ```
 
 ## Show help
@@ -57,7 +108,7 @@ export PATH="/path/exist_lish_dir:$PATH"
 [help](res/help/help.txt)
 
 ```sh
-./lish -h
+lish -h
 ```
 
 ## Output license file
@@ -65,19 +116,19 @@ export PATH="/path/exist_lish_dir:$PATH"
 Licenses can be specified by [alias](res/ids/alias.txt).
 
 ```sh
-./lish p # public-domain CC0-1.0
-./lish l # copyleft      AGPL-3.0
-./lish c # copycenter    Apache-2.0
+lish p # public-domain CC0-1.0
+lish l # copyleft      AGPL-3.0
+lish c # copycenter    Apache-2.0
 ```
 
 Output `LICENSE` file to the current directory.
 
 ### Add filename suffix `-i`
 
-Add [license ID](https://spdx.org/licenses/) to file name suffix.
+Add [license ID](res/ids/alias.txt) to file name suffix.
 
 ```sh
-./lish -i GPL
+lish -i GPL
 ```
 
 The output file name will be `LICENSE-GPL-3.0-only`.
@@ -89,7 +140,7 @@ The output file name will be `LICENSE-GPL-3.0-only`.
 `MIT` and `BSD` require author names. 
 
 ```sh
-./lish -a AuthorName MIT
+lish -a AuthorName MIT
 ```
 
 If there is a `./git/config` file, use the value of `git config --local user.name`.
@@ -99,7 +150,7 @@ If there is a `./git/config` file, use the value of `git config --local user.nam
 Optionally, you can specify the year of copyright issuance.
 
 ```sh
-./lish -a A -y 1999 MIT
+lish -a A -y 1999 MIT
 ```
 
 If not specified, use the runtime year.
@@ -107,7 +158,7 @@ If not specified, use the runtime year.
 ### Selected License `select`
 
 ```sh
-./lish select
+lish select
 ```
 ```sh
 1) CC0		  3) AGPL	   5) LGPL	    7) CC-BY-SA	     9) MIT	     11) BSD-3
@@ -125,15 +176,15 @@ Author name:
 Returns the license type ID from the `LICENSE` file using [licensee](https://github.com/licensee/licensee).
 
 ```sh
-./lish detect
+lish detect
 ```
 
 If there are multiple licenses, change the `LICENSE` file name and output it to detect it.
 
 ```sh
-$ ./lish -i l
-$ ./lish -i c
-$ ./lish detect
+$ lish -i l
+$ lish -i c
+$ lish detect
 Apache-2.0
 GPL-3.0
 ```
@@ -143,7 +194,7 @@ GPL-3.0
 The target is `GPL`,` AGPL`,`CC0`,`Apache`. [headers](res/headers). Source is [SPDX v3.7 2019-10-22](https://spdx.org/licenses/)
 
 ```sh
-./lish -s GPL
+lish -s GPL
 ```
 
 Output to stdout.
@@ -151,7 +202,7 @@ Output to stdout.
 #### Repository name `-r`
 
 ```sh
-./lish -s -r 'My Repo' GPL
+lish -s -r 'My Repo' GPL
 ```
 
 ### Template values
@@ -171,7 +222,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 template|value
 --------|-----
-`{{REPO_NAME}}`|Current directory name
+`{{REPO_NAME}}`|`-r` option value. Or Current directory name
 `{{YEAR}}`|`-y` option value. Or run-time year
 `{{AUTHOR}}`|`-a` option value. Or `git config --local user.name`
 
