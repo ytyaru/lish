@@ -1,8 +1,9 @@
 Create a LICENSE file. 	$(Version)
-Usage: $EXE_NAME [-a AUTHOR -y YEAR -i -s] LICENSE_ID
+Usage: $EXE_NAME [-a AUTHOR -y YEAR -r REPO_NAME -i -s] LICENSE_ID
 Options:
   -a Author name
   -y Copyright year
+  -r Repository name
   -i Add LICENSE_ID to file name suffix
   -s Output standard-license-header
   Other options display help.
@@ -39,6 +40,8 @@ AUTHOR:
   Only when a '.git/config' file exists.
 YEAR: 
   Default value is 'date "+%Y"'
+REPO_NAME:
+  Default value is current directory name.
 Common mistakes:
   Placing optional arguments after positional arguments will fail.
   $ $EXE_NAME mit -a A
@@ -49,7 +52,8 @@ Examples:
   $EXE_NAME p
   $EXE_NAME m
   $EXE_NAME AGPL
-  $EXE_NAME -a AuthorName l
-  $EXE_NAME -a AuthorName -y 1999 l
-  $EXE_NAME -h l
-  $EXE_NAME -h -a AuthorName -y 1999 l
+  $EXE_NAME -a AuthorName m
+  $EXE_NAME -a AuthorName -y 1999 m
+  $EXE_NAME -s l
+  $EXE_NAME -s -a AuthorName -y 1999 l
+  $EXE_NAME -s -a 'First Last' -y 1999 -r 'MyRepo' l
