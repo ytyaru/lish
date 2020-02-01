@@ -3,7 +3,7 @@ Run() {
 	Version() { echo '0.0.1'; }
 	local YEAR=; AUTHOR=; LICENSE=;
 	local EXE_NAME="$(basename "${BASH_SOURCE:-$0}")"
-	local HERE="$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd -P)"
+	local HERE="$(cd "$(dirname "$(realpath "${BASH_SOURCE:-$0}")")"; pwd)"
 	local REPO_PATH="$(pwd -P)"
 	local REPO_NAME="$(basename "$(pwd -P)")"
 	local TEMPLATE_DIR="$(cd "$HERE"; cd '../res/templates'; pwd -P)"
